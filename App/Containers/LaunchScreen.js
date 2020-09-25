@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 
 import SessionActions from '../Redux/SessionRedux';
@@ -57,6 +58,12 @@ class LaunchScreen extends Component {
           ]}>
           <Text>{`${I18n.t('name')}: `}</Text>
           <TextInput
+            style={
+              Platform.OS === 'ios'
+                ? {backgroundColor: Colors.charcoal, color: Colors.snow}
+                : {}
+            }
+            numberOfLines={1}
             placeholder={I18n.t('typeHere')}
             value={name}
             onChangeText={(text) => this.setState({name: text})}
