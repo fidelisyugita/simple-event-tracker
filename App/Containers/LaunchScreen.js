@@ -29,7 +29,7 @@ class LaunchScreen extends Component {
 
     if (rehydrated) {
       if (currentUser) {
-        this.props.navigation.navigate('Main');
+        this.props.navigation.navigate('App');
       }
     }
   }
@@ -39,7 +39,7 @@ class LaunchScreen extends Component {
     const {navigation, saveUser} = this.props;
 
     saveUser({name: name});
-    setTimeout(() => navigation.navigate('Main'), 100);
+    setTimeout(() => navigation.navigate('App'), 100);
   };
 
   render() {
@@ -47,16 +47,17 @@ class LaunchScreen extends Component {
     const {navigation} = this.props;
 
     return (
-      <SafeAreaView style={AppStyles.flex1}>
+      <SafeAreaView style={[AppStyles.flex1, {margin: Scale(16)}]}>
         <View
           style={[
             AppStyles.flex1,
             AppStyles.alignCenter,
-            AppStyles.justifyCenter,
+            // AppStyles.justifyCenter,
+            AppStyles.row,
           ]}>
-          <Text>{I18n.t('name')}</Text>
+          <Text>{`${I18n.t('name')}: `}</Text>
           <TextInput
-            placeholder={I18n.t('name')}
+            placeholder={I18n.t('typeHere')}
             value={name}
             onChangeText={(text) => this.setState({name: text})}
           />
@@ -74,7 +75,6 @@ class LaunchScreen extends Component {
                 height: Scale(50),
                 backgroundColor: name.length < 1 ? Colors.steel : Colors.snow,
                 borderRadius: Scale(12),
-                margin: Scale(16),
               },
             ]}>
             <Text>{I18n.t('enter')}</Text>

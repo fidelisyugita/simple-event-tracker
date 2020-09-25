@@ -1,6 +1,23 @@
 {
    "name": "Name",
+   "place": "Place",
+   "typeHere": "Type Here",
    "enter": "Enter",
    "logout": "Logout",
    "hi": "Hi",
+
+  "successDefault": "Success",
+  "errorDefault": "Error while processing request",
+  "tryAgain": "Plase try again later",
+
+  "gridView": "Grid View",
+  "listView": "List View",
+  
+  "free": "Free",
+  "paid": "Paid",
+  
+  "track": "Track",
+  "tracked": "Tracked",
+  
+  "remove": "Remove",
 }

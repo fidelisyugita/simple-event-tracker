@@ -19,7 +19,18 @@ const images = {
   chevronRight: require('../Images/Icons/chevron-right.png'),
   hamburger: require('../Images/Icons/hamburger.png'),
   backButton: require('../Images/Icons/back-button.png'),
-  closeButton: require('../Images/Icons/close-button.png')
-}
+  closeButton: require('../Images/Icons/close-button.png'),
 
-export default images
+  barbecue: require('../Images/Event/barbecue.jpg'),
+  impressions: require('../Images/Event/impressions.png'),
+  italian: require('../Images/Event/italian.jpg'),
+  metalica: require('../Images/Event/metalica.jpg'),
+  rock: require('../Images/Event/rock.jpg'),
+  saree: require('../Images/Event/saree.jpg'),
+  startups: require('../Images/Event/startups.png'),
+  summer: require('../Images/Event/summer.jpg'),
+  wine: require('../Images/Event/wine.jpg'),
+  workshop: require('../Images/Event/workshop.png'),
+};
+
+export default images;

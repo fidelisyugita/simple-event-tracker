@@ -1,6 +1,8 @@
 import {createReducer, createActions} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
 
+import {IdGenerator} from '../Lib';
+
 /* ------------- Types and Action Creators ------------- */
 
 const {Types, Creators} = createActions({
@@ -30,7 +32,7 @@ export const SessionSelectors = {
 /* ------------- Reducers ------------- */
 
 export const saveUser = (state, {data}) => {
-  return state.merge({...state, user: data});
+  return state.merge({...state, user: {...data, id: IdGenerator()}});
 };
 
 /* ------------- Hookup Reducers To Types ------------- */

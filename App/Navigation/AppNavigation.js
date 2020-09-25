@@ -1,6 +1,7 @@
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 
 import LaunchScreen from '../Containers/LaunchScreen';
+import DrawerNav from './DrawerNavigation';
 import MainNav from './MainNavigation';
 
 import styles from './Styles/NavigationStyles';
@@ -9,7 +10,8 @@ import styles from './Styles/NavigationStyles';
 const PrimaryNav = createSwitchNavigator(
   {
     Init: LaunchScreen,
-    Main: MainNav,
+    App: DrawerNav,
+    // Main: MainNav,
   },
   {
     // Default config for all screens

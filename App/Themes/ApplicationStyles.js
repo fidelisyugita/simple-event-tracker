@@ -40,7 +40,7 @@ const ApplicationStyles = {
     position: 'absolute',
   },
   shadow: {
-    // backgroundColor: Colors.steel,
+    backgroundColor: Colors.silver,
     shadowColor: Colors.charcoal,
     shadowOffset: {
       width: 0,
@@ -52,7 +52,7 @@ const ApplicationStyles = {
     elevation: 5,
   },
   shadowSmall: {
-    // backgroundColor: Colors.steel,
+    backgroundColor: Colors.silver,
     shadowColor: Colors.charcoal,
     shadowOffset: {
       width: 0,
