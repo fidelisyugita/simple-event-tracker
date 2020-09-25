@@ -20,6 +20,8 @@ import {Colors, Fonts, Metrics, Images, AppStyles} from '../../Themes';
 import I18n from '../../I18n';
 import {Scale} from '../../Transforms';
 
+import EventComponent from '../../Components/EventComponent';
+
 class TrackedEventScreen extends Component {
   constructor(props) {
     super(props);
@@ -62,50 +64,57 @@ class TrackedEventScreen extends Component {
         numColumns={numColumns}
         keyExtractor={(item, index) => item + index}
         renderItem={({item, index}) => (
-          <TouchableOpacity
+          <EventComponent
+            item={item}
             onPress={() =>
               navigation.navigate('EventDetailScreen', {item: item})
             }
-            style={[
-              AppStyles.flex1,
-              AppStyles.shadow,
-              {
-                margin: Scale(8),
-                borderRadius: Scale(8),
-              },
-            ]}>
-            <Image
-              source={item.image}
-              style={{
-                width: '100%',
-                height: Scale(150),
-                borderTopLeftRadius: Scale(8),
-                borderTopRightRadius: Scale(8),
-              }}
-            />
-            <View style={{padding: Scale(12)}}>
-              <Text>{item.title}</Text>
-              <Text>{item.place}</Text>
-              <Text>{item.isFree ? I18n.t('free') : I18n.t('paid')}</Text>
+            onDelete={() => this.onDelete(item)}
+          />
+          // <TouchableOpacity
+          //   onPress={() =>
+          //     navigation.navigate('EventDetailScreen', {item: item})
+          //   }
+          //   style={[
+          //     AppStyles.flex1,
+          //     AppStyles.shadow,
+          //     {
+          //       margin: Scale(8),
+          //       borderRadius: Scale(8),
+          //     },
+          //   ]}>
+          //   <Image
+          //     source={item.image}
+          //     style={{
+          //       width: '100%',
+          //       height: Scale(150),
+          //       borderTopLeftRadius: Scale(8),
+          //       borderTopRightRadius: Scale(8),
+          //     }}
+          //   />
+          //   <View style={{padding: Scale(12)}}>
+          //     <Text>{item.title}</Text>
+          //     <Text>{item.place}</Text>
+          //     <Text>{item.isFree ? I18n.t('free') : I18n.t('paid')}</Text>
 
-              <TouchableOpacity
-                onPress={() => this.onDelete(item)}
-                style={[
-                  AppStyles.alignCenter,
-                  AppStyles.justifyCenter,
-                  AppStyles.shadowSmall,
-                  {
-                    width: Scale(100),
-                    height: Scale(50),
-                    backgroundColor: Colors.snow,
-                    borderRadius: Scale(12),
-                    marginTop: Scale(12),
-                  },
-                ]}>
-                <Text>{I18n.t('remove')}</Text>
-              </TouchableOpacity>
-            </View>
-          </TouchableOpacity>
+          //     <TouchableOpacity
+          //       onPress={() => this.onDelete(item)}
+          //       style={[
+          //         AppStyles.alignCenter,
+          //         AppStyles.justifyCenter,
+          //         AppStyles.shadowSmall,
+          //         {
+          //           width: Scale(100),
+          //           height: Scale(50),
+          //           backgroundColor: Colors.snow,
+          //           borderRadius: Scale(12),
+          //           marginTop: Scale(12),
+          //         },
+          //       ]}>
+          //       <Text>{I18n.t('remove')}</Text>
+          //     </TouchableOpacity>
+          //   </View>
+          // </TouchableOpacity>
         )}
       />
     );

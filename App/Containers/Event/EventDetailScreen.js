@@ -19,6 +19,8 @@ import {Colors, Fonts, Metrics, Images, AppStyles} from '../../Themes';
 import I18n from '../../I18n';
 import {Scale} from '../../Transforms';
 
+import EventComponent from '../../Components/EventComponent';
+
 class EventDetailScreen extends Component {
   constructor(props) {
     super(props);
@@ -57,7 +59,13 @@ class EventDetailScreen extends Component {
 
     return (
       <SafeAreaView style={[AppStyles.flex1]}>
-        <View
+        <EventComponent
+          item={item}
+          isTracked={isTracked}
+          onTrack={this.onTrack}
+          onPress={() => navigation.navigate('EventDetailScreen', {item: item})}
+        />
+        {/* <View
           style={[
             AppStyles.flex1,
             AppStyles.shadow,
@@ -98,7 +106,7 @@ class EventDetailScreen extends Component {
               <Text>{isTracked ? I18n.t('tracked') : I18n.t('track')}</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </View> */}
       </SafeAreaView>
     );
   }

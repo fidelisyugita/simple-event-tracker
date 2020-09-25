@@ -20,6 +20,8 @@ import {Colors, Fonts, Metrics, Images, AppStyles} from '../../Themes';
 import I18n from '../../I18n';
 import {Scale} from '../../Transforms';
 
+import EventComponent from '../../Components/EventComponent';
+
 class EventScreen extends Component {
   constructor(props) {
     super(props);
@@ -50,33 +52,39 @@ class EventScreen extends Component {
         numColumns={numColumns}
         keyExtractor={(item, index) => item + index}
         renderItem={({item, index}) => (
-          <TouchableOpacity
+          <EventComponent
+            item={item}
             onPress={() =>
               navigation.navigate('EventDetailScreen', {item: item})
             }
-            style={[
-              AppStyles.flex1,
-              AppStyles.shadow,
-              {
-                margin: Scale(8),
-                borderRadius: Scale(8),
-              },
-            ]}>
-            <Image
-              source={item.image}
-              style={{
-                width: '100%',
-                height: Scale(150),
-                borderTopLeftRadius: Scale(8),
-                borderTopRightRadius: Scale(8),
-              }}
-            />
-            <View style={{padding: Scale(12)}}>
-              <Text>{item.title}</Text>
-              <Text>{item.place}</Text>
-              <Text>{item.isFree ? I18n.t('free') : I18n.t('paid')}</Text>
-            </View>
-          </TouchableOpacity>
+          />
+          // <TouchableOpacity
+          //   onPress={() =>
+          //     navigation.navigate('EventDetailScreen', {item: item})
+          //   }
+          //   style={[
+          //     AppStyles.flex1,
+          //     AppStyles.shadow,
+          //     {
+          //       margin: Scale(8),
+          //       borderRadius: Scale(8),
+          //     },
+          //   ]}>
+          //   <Image
+          //     source={item.image}
+          //     style={{
+          //       width: '100%',
+          //       height: Scale(150),
+          //       borderTopLeftRadius: Scale(8),
+          //       borderTopRightRadius: Scale(8),
+          //     }}
+          //   />
+          //   <View style={{padding: Scale(12)}}>
+          //     <Text>{item.title}</Text>
+          //     <Text>{item.place}</Text>
+          //     <Text>{item.isFree ? I18n.t('free') : I18n.t('paid')}</Text>
+          //   </View>
+          // </TouchableOpacity>
         )}
       />
     );
