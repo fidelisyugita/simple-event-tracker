@@ -10,13 +10,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import SessionActions from '../Redux/SessionRedux';
+import SessionActions from '../../Redux/SessionRedux';
 
-import {Colors, Fonts, Metrics, Images, AppStyles} from '../Themes';
-import I18n from '../I18n';
-import {Scale} from '../Transforms';
+import {Colors, Fonts, Metrics, Images, AppStyles} from '../../Themes';
+import I18n from '../../I18n';
+import {Scale} from '../../Transforms';
 
-class LaunchScreen extends Component {
+class HomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,27 +24,17 @@ class LaunchScreen extends Component {
     };
   }
 
-  componentDidUpdate(nextProps, nextState) {
-    const {rehydrated, currentUser} = this.props;
-
-    if (rehydrated) {
-      if (currentUser) {
-        this.props.navigation.navigate('Main');
-      }
-    }
-  }
-
-  onSubmit = () => {
+  onLogout = () => {
     const {name} = this.state;
-    const {navigation, saveUser} = this.props;
+    const {navigation, logout} = this.props;
 
-    saveUser({name: name});
-    setTimeout(() => navigation.navigate('Main'), 100);
+    logout();
+    navigation.navigate('Init');
   };
 
   render() {
     const {name} = this.state;
-    const {navigation} = this.props;
+    const {navigation, currentUser} = this.props;
 
     return (
       <SafeAreaView style={AppStyles.flex1}>
@@ -54,17 +44,11 @@ class LaunchScreen extends Component {
             AppStyles.alignCenter,
             AppStyles.justifyCenter,
           ]}>
-          <Text>{I18n.t('name')}</Text>
-          <TextInput
-            placeholder={I18n.t('name')}
-            value={name}
-            onChangeText={(text) => this.setState({name: text})}
-          />
+          <Text>{`${I18n.t('hi')} ${currentUser.name}`}</Text>
         </View>
         <View style={[AppStyles.justifyEnd, AppStyles.alignEnd]}>
           <TouchableOpacity
-            disabled={name.length < 1}
-            onPress={this.onSubmit}
+            onPress={this.onLogout}
             style={[
               AppStyles.alignCenter,
               AppStyles.justifyCenter,
@@ -72,12 +56,12 @@ class LaunchScreen extends Component {
               {
                 width: Scale(100),
                 height: Scale(50),
-                backgroundColor: name.length < 1 ? Colors.steel : Colors.snow,
+                backgroundColor: Colors.snow,
                 borderRadius: Scale(12),
                 margin: Scale(16),
               },
             ]}>
-            <Text>{I18n.t('enter')}</Text>
+            <Text>{I18n.t('logout')}</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -86,7 +70,7 @@ class LaunchScreen extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.tron.log({LaunchScreen: state});
+  console.tron.log({HomeScreen: state});
 
   let rehydrated = false;
   if (state._persist) {
@@ -100,7 +84,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  saveUser: (data) => dispatch(SessionActions.saveUser(data)),
+  logout: () => dispatch(SessionActions.logout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LaunchScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
