@@ -63,50 +63,8 @@ class EventDetailScreen extends Component {
           item={item}
           isTracked={isTracked}
           onTrack={this.onTrack}
-          onPress={() => navigation.navigate('EventDetailScreen', {item: item})}
+          // onPress={() => navigation.navigate('EventDetailScreen', {item: item})}
         />
-        {/* <View
-          style={[
-            AppStyles.flex1,
-            AppStyles.shadow,
-            {
-              margin: Scale(8),
-              borderRadius: Scale(8),
-            },
-          ]}>
-          <Image
-            source={item.image}
-            style={{
-              width: '100%',
-              height: Scale(250),
-              borderTopLeftRadius: Scale(8),
-              borderTopRightRadius: Scale(8),
-            }}
-          />
-          <View style={{padding: Scale(12)}}>
-            <Text>{item.title}</Text>
-            <Text>{item.place}</Text>
-            <Text>{item.isFree ? I18n.t('free') : I18n.t('paid')}</Text>
-
-            <TouchableOpacity
-              disabled={isTracked}
-              onPress={this.onTrack}
-              style={[
-                AppStyles.alignCenter,
-                AppStyles.justifyCenter,
-                AppStyles.shadowSmall,
-                {
-                  width: Scale(100),
-                  height: Scale(50),
-                  backgroundColor: Colors.snow,
-                  borderRadius: Scale(12),
-                  marginTop: Scale(12),
-                },
-              ]}>
-              <Text>{isTracked ? I18n.t('tracked') : I18n.t('track')}</Text>
-            </TouchableOpacity>
-          </View>
-        </View> */}
       </SafeAreaView>
     );
   }
